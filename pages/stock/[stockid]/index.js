@@ -59,7 +59,7 @@ const StockProfile = ({ stockid, data }) => {
 
 	useEffect(
 		() => {
-			if (Object.keys(data).length === 0 || data !== undefined || data !== null) {
+			if (Object.keys(data).length !== 0 || data !== undefined || data !== null) {
 				setLoading(false);
 			}
 		},
