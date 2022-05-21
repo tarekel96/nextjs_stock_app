@@ -135,7 +135,7 @@ const Dashboard = ({ user, chosenTheme }) => {
 				setLoading(false);
 			}
 		},
-		[ fetchStocks ]
+		[ fetchStocks, stocks.length ]
 	);
 
 	useEffect(

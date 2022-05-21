@@ -76,10 +76,10 @@ const StockProfile = ({ stockid, data }) => {
 
 	// define how this is assigned due to daily changes
 	let posNegValue = 0;
-	if (data.dp > 0) {
+	if (data?.dp > 0) {
 		posNegValue = 1;
 	}
-	else if (data.dp < 0) {
+	else if (data?.dp < 0) {
 		posNegValue = -1;
 	}
 	else {
@@ -107,8 +107,8 @@ const StockProfile = ({ stockid, data }) => {
 			</HomeButton>
 			<Box sx={{ p: 2 }} />
 			<StockContainer posNeg={posNegValue}>
-				<h1>{data.name} Stock Profile Page</h1>
-				<StockImage src={data.logo} alt={`${stockid} Logo`} />
+				<h1>{data?.name} Stock Profile Page</h1>
+				<StockImage src={data?.logo} alt={`${stockid} Logo`} />
 				<StockTable>
 					<tbody>
 						<StockRow>
@@ -124,7 +124,7 @@ const StockProfile = ({ stockid, data }) => {
 								<h3>Current Price:</h3>
 							</StockTableData>
 							<StockTableData>
-								<h3>${data.c}</h3>
+								<h3>{typeof data.c !== "number" ?   "N/A" : "$" + String(roundOne(data.c))}</h3>
 							</StockTableData>
 						</StockRow>
 						<StockRow>
@@ -133,7 +133,7 @@ const StockProfile = ({ stockid, data }) => {
 							</StockTableData>
 							<StockTableData>
 								<h3>
-									${data.d} ({roundOne(data.dp)}%)
+									{data?.d} {typeof data.dp !== "number" ?   "N/A" : "$" + String(roundOne(data.dp))}
 								</h3>
 							</StockTableData>
 						</StockRow>
@@ -142,7 +142,7 @@ const StockProfile = ({ stockid, data }) => {
 								<h3>Market Cap:</h3>
 							</StockTableData>
 							<StockTableData>
-								<h3>${Math.round(data.marketCapitalization)} Million</h3>
+								<h3>	{typeof data.marketCapitalization !== "number" ?   "N/A" : "$" + String(Math.round(data.marketCapitalization))}{' '}Million</h3>
 							</StockTableData>
 						</StockRow>
 						<StockRow>
@@ -150,7 +150,7 @@ const StockProfile = ({ stockid, data }) => {
 								<h3>IPO date:</h3>
 							</StockTableData>
 							<StockTableData>
-								<h3>{data.ipo}</h3>
+								<h3>{typeof data.ipo !== "number" ?   "N/A" : "$" + String(data.ipo)}</h3>
 							</StockTableData>
 						</StockRow>
 						<StockRow>
@@ -158,7 +158,7 @@ const StockProfile = ({ stockid, data }) => {
 								<h3>Country:</h3>
 							</StockTableData>
 							<StockTableData>
-								<h3>{data.country}</h3>
+								<h3>{typeof data.country !== "string" ?   "N/A" : data.country}</h3>
 							</StockTableData>
 						</StockRow>
 					</tbody>
