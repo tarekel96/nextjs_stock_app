@@ -150,7 +150,7 @@ const StockProfile = ({ stockid, data }) => {
 								<h3>IPO date:</h3>
 							</StockTableData>
 							<StockTableData>
-								<h3>{typeof data.ipo !== "number" ?   "N/A" : "$" + String(data.ipo)}</h3>
+								<h3>{data.ipo !==  null  && data.ipo !==  undefined ? String(data.ipo) : "N/A" }</h3>
 							</StockTableData>
 						</StockRow>
 						<StockRow>
@@ -171,7 +171,8 @@ const StockProfile = ({ stockid, data }) => {
 const StockTable = styled('table')({
 	border: '1px solid black',
 	borderSpacing: 0,
-	textAlign: 'left'
+	textAlign: 'left',
+	margin: '0 auto'
 });
 const StockRow = styled('tr')({
 	border: '1px solid black'
