@@ -90,9 +90,9 @@ const StockProfile = ({ stockid, data }) => {
 		return +(Math.round(num + 'e+1') + 'e-1');
 	};
 
-	// const numberWithCommas = (x) => {
-	// 	return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-	// };
+	const numberWithCommas = (x) => {
+		return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+	};
 
 	return (
 		<StockPageContainer>
@@ -133,7 +133,7 @@ const StockProfile = ({ stockid, data }) => {
 							</StockTableData>
 							<StockTableData>
 								<h3>
-									{data?.d} {typeof data.dp !== "number" ?   "N/A" : "$" + String(roundOne(data.dp))}
+									 {typeof data.dp !== "number" ?   "N/A" : "$" + String(numberWithCommas(data?.d)) + String(roundOne(data.dp)) + "%"}
 								</h3>
 							</StockTableData>
 						</StockRow>
